@@ -1,0 +1,1369 @@
+/* --- 1. SETUP & VARIABLES --- */
+:root {
+    /* Colors - Elegant Purple Palette */
+    --primary: #8B5CF6;
+    --primary-dark: #7C3AED;
+    --primary-light: #DDD6FE;
+
+    /* Backgrounds & Text (Light Mode Default) */
+    --bg-body: #FAFAFA;
+    --bg-surface: #FFFFFF;
+    --bg-surface-2: #F3F4F6;
+    --text-main: #1F2937;
+    --text-muted: #6B7280;
+    --border: #E5E7EB;
+
+    /* Typography */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Lora', serif;
+    --font-ui: 'Inter', sans-serif;
+
+    /* Shadow */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Mode Variables */
+[data-theme="dark"] {
+    --bg-body: #111827;
+    --bg-surface: #1F2937;
+    --bg-surface-2: #374151;
+    --text-main: #F9FAFB;
+    --text-muted: #9CA3AF;
+    --border: #374151;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+/* Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 15px;
+}
+
+body {
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    line-height: 1.7;
+    transition: background-color 0.3s, color 0.3s;
+    overflow-x: hidden;
+    letter-spacing: 0.3px;
+}
+
+/* Container Utility */
+.rstory-container {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 11px 26px;
+    border-radius: 8px;
+    font-family: var(--font-ui);
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--text-main);
+    color: var(--bg-body);
+    box-shadow: none;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.25);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--text-main);
+    color: var(--text-main);
+    margin-left: 10px;
+}
+
+.btn-outline:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: rgba(139, 92, 246, 0.05);
+}
+
+/* --- 2. NAVIGATION --- */
+.rstory-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(var(--bg-body), 0.85);
+    /* Sedikit transparan */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 0;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo h2 {
+    font-family: var(--font-ui);
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: var(--text-main);
+    letter-spacing: -0.5px;
+}
+
+.nav-logo {
+    text-decoration: none;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-family: var(--font-ui);
+    font-weight: 500;
+    font-size: 0.85rem;
+    transition: color 0.2s;
+    letter-spacing: 0.2px;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--primary);
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.theme-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    font-size: 1rem;
+}
+
+.theme-btn:hover {
+    background: var(--bg-surface-2);
+    border-color: var(--primary);
+}
+
+/* Hide Icons based on theme */
+[data-theme="light"] .fa-sun {
+    display: none;
+}
+
+[data-theme="dark"] .fa-moon {
+    display: none;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 2px;
+    background-color: var(--text-main);
+    transition: 0.3s;
+}
+
+/* --- 3. HERO SECTION --- */
+.hero-section {
+    padding: 3.5rem 0 5rem 0;
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background: linear-gradient(135deg, var(--bg-body) 0%, rgba(139, 92, 246, 0.15) 50%, var(--bg-body) 100%);
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(rgba(139, 92, 246, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(139, 92, 246, 0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: 0 0, 0 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.hero-container {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 3.5rem;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 12px;
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    border-radius: 6px;
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.5px;
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.hero-desc {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 85%;
+    line-height: 1.7;
+}
+
+.hero-cta {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2.5rem;
+}
+
+.hero-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-img {
+    width: 100%;
+    max-width: 360px;
+    border-radius: 16px;
+    position: relative;
+    z-index: 2;
+    box-shadow: none;
+    filter: grayscale(5%) contrast(100%);
+    transition: transform 0.3s ease;
+}
+
+.profile-img:hover {
+    transform: translateY(-4px);
+}
+
+/* --- 4. SERIES SECTION --- */
+.series-section {
+    padding: 5rem 0;
+    border-top: 1px solid var(--border);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.subtitle {
+    font-family: var(--font-ui);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.75rem;
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.title {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    margin-top: 0.5rem;
+    font-weight: 600;
+}
+
+/* Card Styling */
+.story-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2.25rem;
+    box-shadow: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: 3rem;
+}
+
+.story-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    background: var(--bg-surface);
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+}
+
+.card-visual {
+    display: none;
+}
+.book-cover {
+    width: 100%;
+    aspect-ratio: 2/3;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.book-cover:hover {
+    transform: translateY(-4px);
+}
+
+.sun-icon {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    opacity: 0.8;
+}
+
+.cover-text h3 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    line-height: 1.25;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.cover-text span {
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    letter-spacing: 0.8px;
+    opacity: 0.85;
+    font-weight: 500;
+}
+
+/* Metadata */
+.meta-tags {
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+.tag {
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    background: var(--bg-surface-2);
+    padding: 4px 10px;
+    border-radius: 6px;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.status {
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    color: var(--primary);
+    font-weight: 700;
+    padding: 4px 0;
+    letter-spacing: 0.5px;
+}
+
+.status.completed {
+    color: #10b981;
+}
+
+.story-title {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.story-synopsis {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    line-height: 1.8;
+}
+
+/* Accordion */
+.accordion-btn {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--border);
+    padding: 1rem;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-family: var(--font-ui);
+    font-weight: 500;
+    color: var(--text-main);
+    transition: all 0.2s;
+    font-size: 0.95rem;
+}
+
+.accordion-btn:hover {
+    background: var(--bg-surface-2);
+    border-color: var(--primary);
+}
+
+.accordion-btn i {
+    transition: transform 0.3s;
+}
+
+.accordion-btn.active i {
+    transform: rotate(180deg);
+}
+
+.chapter-list {
+    display: none;
+    /* Hidden by default */
+    margin-top: 1rem;
+    animation: slideDown 0.3s ease-out;
+}
+
+.chapter-list.show {
+    display: block;
+}
+
+.chapter-item {
+    display: flex;
+    align-items: center;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none;
+    color: var(--text-muted);
+    transition: all 0.2s;
+    font-size: 0.9rem;
+}
+
+.chapter-item:hover {
+    color: var(--primary);
+    padding-left: 8px;
+}
+
+.ch-num {
+    font-family: var(--font-ui);
+    font-weight: 700;
+    width: 40px;
+    color: var(--text-muted);
+    opacity: 0.6;
+}
+
+.ch-title {
+    font-family: var(--font-ui);
+    font-weight: 500;
+    flex: 1;
+    font-size: 0.9rem;
+}
+
+.ch-time {
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    opacity: 0.6;
+    color: var(--text-muted);
+}
+
+/* --- 5. ABOUT SECTION --- */
+.about-section {
+    padding: 5rem 0;
+    background: var(--bg-surface-2);
+    text-align: center;
+}
+
+.about-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.about-text p {
+    margin-bottom: 1.4rem;
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+}
+
+.signature {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    color: var(--primary);
+    font-style: italic;
+}
+
+/* --- 6. FOOTER --- */
+.footer {
+    background: #111827;
+    color: #F9FAFB;
+    padding: 3.5rem 0 2rem 0;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.footer-brand h3 {
+    font-family: var(--font-ui);
+    font-size: 1.35rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.footer-brand p {
+    font-size: 0.85rem;
+    color: #9CA3AF;
+    font-style: italic;
+    font-family: var(--font-body);
+    line-height: 1.6;
+}
+
+.footer-social {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-social a {
+    color: #D1D5DB;
+    font-size: 1.15rem;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    text-decoration: none;
+}
+
+.footer-social a:hover {
+    color: var(--primary);
+    background: rgba(139, 92, 246, 0.15);
+    transform: translateY(-2px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid #374151;
+}
+
+.footer-bottom p {
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    color: #6B7280;
+    letter-spacing: 0.3px;
+}
+
+/* --- 7. ANIMATION --- */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- 8. RESPONSIVE (MOBILE) --- */
+@media (max-width: 768px) {
+
+    /* Base adjustments */
+    html {
+        font-size: 14px;
+    }
+
+    /* Nav Mobile */
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--bg-surface);
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 1rem;
+        gap: 1.5rem;
+        border-bottom: 1px solid var(--border);
+        transform: translateY(-150%);
+        transition: transform 0.3s ease-in-out;
+        box-shadow: var(--shadow-md);
+        z-index: 999;
+    }
+
+    .nav-links.active {
+        transform: translateY(0);
+    }
+
+    /* Hero Mobile */
+    .hero-section {
+        padding: 3rem 0 4rem 0;
+        min-height: auto;
+    }
+
+    .hero-container {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 2.5rem;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+        line-height: 1.25;
+    }
+
+    .hero-desc {
+        font-size: 0.95rem;
+        max-width: 100%;
+    }
+
+    .hero-cta {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .profile-img {
+        max-width: 260px;
+        margin: 0 auto;
+    }
+
+    /* Card Mobile */
+    .story-card {
+        padding: 1.5rem;
+    }
+
+    .card-content {
+        text-align: center;
+    }
+
+    /* Ensure chapter titles on main page are left-aligned on mobile */
+    .story-card .chapter-list .chapter-item .ch-title {
+        text-align: left;
+        display: block;
+        width: calc(100% - 56px);
+    }
+
+    .meta-tags {
+        justify-content: center;
+    }
+
+    .story-title {
+        font-size: 1.4rem;
+    }
+
+    .story-synopsis {
+        font-size: 0.9rem;
+    }
+
+    /* Section spacing */
+    .series-section {
+        padding: 4rem 0;
+    }
+
+    .section-header {
+        margin-bottom: 2.5rem;
+    }
+
+    /* Footer Mobile */
+    .footer-top {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+
+    /* Reader Mobile */
+    .main-title {
+        font-size: 1.8rem;
+    }
+
+    .chapter-navigation {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav-story-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .chapter-select-wrapper {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .chapter-text p {
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+
+}
+
+/* =========================================
+   READER MODE STYLES (Story Pages)
+   ========================================= */
+
+/* Navigasi Reader (Lebih Simpel) */
+.reader-nav {
+    border-bottom: none;
+    background: var(--bg-body);
+    /* Blend dengan background */
+}
+
+.back-link {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-family: var(--font-ui);
+    font-weight: 500;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.back-link:hover {
+    color: var(--primary);
+    transform: translateX(-5px);
+}
+
+/* Progress Bar di Paling Atas */
+.reading-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: var(--primary);
+    width: 0%;
+    /* Diatur via JS */
+    z-index: 1001;
+    transition: width 0.3s ease;
+}
+
+/* Container Baca (Lebih Sempit agar Fokus) */
+.reader-section {
+    padding-bottom: 6rem;
+}
+
+.reader-container {
+    max-width: 720px;
+    /* Lebar ideal untuk membaca */
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Header Cerita */
+.story-header {
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.story-category {
+    font-family: var(--font-ui);
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 1.2px;
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.main-title {
+    font-family: var(--font-heading);
+    font-size: 2.6rem;
+    line-height: 1.2;
+    margin: 1rem 0;
+    font-weight: 600;
+}
+
+.story-meta {
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: 0.3px;
+}
+
+.dot {
+    font-size: 0.6rem;
+    opacity: 0.5;
+}
+
+/* Divider */
+.divider {
+    border: 0;
+    height: 1px;
+    background: var(--border);
+    margin: 2rem 0;
+    width: 100%;
+}
+
+/* ISI KONTEN (Typography Sangat Penting Disini) */
+.chapter-content {
+    animation: fadeIn 0.5s ease;
+}
+
+.chapter-title {
+    font-family: var(--font-heading);
+    font-size: 1.65rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.chapter-text p {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--text-main);
+    margin-bottom: 1.5rem;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+/* Dropcaps (Huruf Pertama Besar - Opsional, bikin elegan) */
+.chapter-text p:first-of-type::first-letter {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    float: left;
+    line-height: 0.8;
+    padding-right: 12px;
+    color: var(--primary);
+}
+
+/* Tombol Navigasi Chapter */
+.chapter-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.nav-story-btn {
+    padding: 11px 22px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--bg-surface);
+    color: var(--text-main);
+    font-family: var(--font-ui);
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+}
+
+.nav-story-btn:hover:not(:disabled) {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.nav-story-btn.primary {
+    background: var(--text-main);
+    color: var(--bg-body);
+    border: none;
+}
+
+.nav-story-btn.primary:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.nav-story-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: var(--bg-surface-2);
+}
+
+/* Dropdown Menu Style */
+.chapter-select-wrapper {
+    position: relative;
+    flex-grow: 1;
+    /* Di tengah melebar */
+    max-width: 300px;
+}
+
+#chapterSelect {
+    width: 100%;
+    padding: 11px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--bg-surface);
+    color: var(--text-main);
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s;
+}
+
+#chapterSelect:hover {
+    border-color: var(--primary);
+}
+
+#chapterSelect:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.1);
+}
+
+/* Simple Footer untuk Halaman Baca */
+.simple-footer {
+    padding: 2rem 0;
+    border-top: 1px solid var(--border);
+    background: var(--bg-body);
+    /* Blend background */
+    color: var(--text-muted);
+}
+
+/* Animasi Fade In saat ganti chapter */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Reader */
+@media (max-width: 768px) {
+    .story-header {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .main-title {
+        font-size: 1.8rem;
+        margin: 0.8rem 0;
+    }
+
+    .chapter-navigation {
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 2.5rem;
+    }
+
+    .nav-story-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 11px 20px;
+    }
+
+    .chapter-select-wrapper {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .chapter-text p {
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+}
+
+/* =========================================
+   FUTURISTIC MODERN FOOTER
+   ========================================= */
+
+/* Base Footer Container */
+.footer-future {
+    position: relative;
+    
+    padding-top: 0;
+    overflow: hidden;
+    
+    /* Background Adaptive */
+    background: rgba(255, 255, 255, 0.8); /* Light Mode Base */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+[data-theme="dark"] .footer-future {
+    background: rgba(17, 24, 39, 0.85); /* Dark Mode Base */
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Glowing Top Border */
+.footer-top-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    box-shadow: 0 0 15px var(--primary); /* Neon Glow Effect */
+    opacity: 0.7;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 4rem;
+    padding: 4rem 0 3rem 0;
+}
+
+/* 1. Brand Styling */
+.brand-logo {
+    font-family: var(--font-ui); /* Menggunakan Font Inter agar lebih modern */
+    font-weight: 800;
+    font-size: 1.8rem;
+    letter-spacing: -1px;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-main);
+}
+
+.version {
+    font-size: 0.7rem;
+    background: var(--bg-surface-2);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--text-muted);
+    font-weight: 600;
+    border: 1px solid var(--border);
+}
+
+/* =========================================
+   LIVE SESSION MONITOR (Functional)
+   ========================================= */
+
+.session-monitor {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(139, 92, 246, 0.05); /* Ungu sangat tipis */
+    border: 1px solid var(--border);
+    padding: 8px 14px;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    font-family: 'Courier New', monospace; /* Font teknis */
+    backdrop-filter: blur(4px);
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
+}
+
+[data-theme="dark"] .session-monitor {
+    background: rgba(0, 0, 0, 0.3);
+    border-color: rgba(255,255,255,0.1);
+}
+
+.monitor-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.monitor-label, .time-display {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--text-main);
+}
+
+.monitor-divider {
+    color: var(--border);
+    font-size: 0.8rem;
+}
+
+.monitor-icon {
+    font-size: 0.8rem;
+    color: var(--primary);
+}
+
+/* Status Dot Animation & Colors */
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #10B981; /* Default Green (Online) */
+    box-shadow: 0 0 8px #10B981;
+    transition: all 0.3s ease;
+}
+
+/* Class untuk status Offline (diatur via JS) */
+.monitor-item.offline .pulse-dot {
+    background-color: #EF4444; /* Merah */
+    box-shadow: 0 0 8px #EF4444;
+    animation: blink 1s infinite; /* Berkedip cepat kalau offline */
+}
+
+.monitor-item.offline .monitor-label {
+    color: #EF4444;
+}
+
+/* Class untuk Animasi Detik Jam */
+.time-display {
+    font-variant-numeric: tabular-nums; /* Agar angka tidak bergeser */
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+/* 2. Navigation Styling */
+.col-header {
+    font-family: var(--font-ui);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+}
+
+.nav-list { list-style: none; padding: 0; }
+.nav-list li { margin-bottom: 0.8rem; }
+
+.nav-item {
+    text-decoration: none;
+    color: var(--text-main);
+    font-family: var(--font-ui);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+.nav-item span {
+    color: var(--primary);
+    margin-right: 5px;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: 0.3s;
+    font-family: monospace;
+}
+
+.nav-item:hover {
+    color: var(--primary);
+    transform: translateX(5px);
+}
+
+.nav-item:hover span {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* 3. Social Chips */
+.social-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: var(--bg-surface-2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-main);
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.chip:hover {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.4); /* Glow effect on hover */
+    transform: translateY(-2px);
+}
+
+/* 4. Bottom Bar */
+.footer-bar {
+    border-top: 1px solid var(--border);
+    padding: 1.5rem 0 2rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: monospace; /* Tech feel */
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.copyright-text { opacity: 0.8; }
+.location-text { 
+    letter-spacing: 2px; 
+    opacity: 0.6; 
+}
+
+/* Animation Keyframes */
+@keyframes pulse {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    
+    .footer-bar {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+    
+    .system-status { margin-bottom: 1rem; }
+}
+
+/* =========================================
+   DEVICE POWER & NAV PANEL
+   ========================================= */
+
+.system-panel-btn {
+    background: transparent;
+    border: none;
+    font-family: 'Courier New', monospace; /* Font teknis */
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+/* Hover Effect: Glow & Border */
+.system-panel-btn:hover {
+    color: var(--primary);
+    background: rgba(139, 92, 246, 0.05);
+    border-color: rgba(139, 92, 246, 0.3);
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.1);
+}
+
+.system-panel-btn:hover .panel-action {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.panel-divider {
+    opacity: 0.3;
+    margin: 0 4px;
+}
+
+/* Warna Baterai */
+.battery-low { color: #EF4444 !important; animation: blinkRed 1s infinite; }
+.battery-med { color: #F59E0B !important; }
+.battery-high { color: #10B981 !important; }
+.battery-charging { color: #3B82F6 !important; }
+
+@keyframes blinkRed {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Responsive: Sembunyikan teks "RETURN TOP" di HP sempit, sisakan icon */
+@media (max-width: 400px) {
+    .panel-action { display: none; }
+    .panel-divider { display: none; }
+}

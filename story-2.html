@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baris Kode untuk Mimpi - R-STORY</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="rstory-body">
+    
+    <div class="reading-progress-bar" id="progressBar"></div>
+
+    <nav class="rstory-nav reader-nav">
+        <div class="rstory-container nav-container">
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                <span>Kembali ke Home</span>
+            </a>
+            
+            <div class="nav-actions">
+                <button id="themeToggle" class="theme-btn" aria-label="Ganti Tema">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="reader-section">
+        <div class="reader-container">
+            
+            <div class="story-header">
+                <span class="story-category">Fiction Series</span>
+                <h1 class="main-title">Baris Kode untuk Mimpi</h1>
+                <div class="story-meta">
+                    <span>Oleh <b>M. Raffi Zahrandhika</b></span>
+                    <span class="dot">•</span>
+                    <span id="readTime">17 Mei 2025</span>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <article id="chapterDisplay" class="chapter-content">
+                </article>
+
+            <hr class="divider">
+
+            <div class="chapter-navigation">
+                <button id="prevBtn" class="nav-story-btn" onclick="changeChapter(-1)">
+                    <i class="fas fa-arrow-left"></i> Sebelumnya
+                </button>
+
+                <div class="chapter-select-wrapper">
+                    <select id="chapterSelect" onchange="jumpToChapter()">
+                        </select>
+                </div>
+
+                <button id="nextBtn" class="nav-story-btn primary" onclick="changeChapter(1)">
+                    Selanjutnya <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="rstory-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <h3>R-STORY</h3>
+                    <p>Tales, Opinions, & Reflections</p>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="https://instagram.com/raffizahrandhika" target="_blank" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/mrffzd" target="_blank" aria-label="Twitter">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/muhammad-raffi-zahrandhika-7a6537378" target="_blank" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://tiktok.com/@raffizahrandhika" target="_blank" aria-label="TikTok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://t.me/raffizahrandhika" target="_blank" aria-label="Telegram">
+                        <i class="fab fa-telegram-plane"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Muhammad Raffi Zahrandhika. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <script>
+        // --- DATA CERITA ---
+        const storyData = [
+            {
+                title: "Chapter 1: Desiran di Balik Layar",
+                date: "17 Mei 2025",
+                content: `
+                    <p>Siang itu, kelas X-E06 SMA Negeri 1 Jekulo riuh seperti biasa. Suara kursi bergeser, canda yang meledak di sudut ruangan, dan kipas angin yang mendengung malas di langit-langit—semuanya melebur menjadi satu kebisingan yang akrab. Namun, di barisan ketiga dari jendela, Rafa tidak mendengar satu pun dari semua itu.</p>
+                    <p>Matanya terpaku pada layar laptop di hadapannya.</p>
+                    <p>Di sana, terbuka sebuah laman yang bernama <em>Smart Saloku</em>—platform digital milik sekolah yang belakangan ramai dibicarakan di grup kelas. Rafa menggulir lamannya perlahan: ada jadwal pelajaran yang bisa diklik, pengumuman yang tersusun rapi, bahkan antarmuka yang terasa seperti aplikasi sungguhan. Bukan sekadar tulisan berjejer di atas latar putih.</p>
+                    <p><em>Ini… Blogger?</em></p>
+                    <p>Rafa menautkan alisnya. Ia tahu betul apa itu Blogger—ia sendiri memakainya untuk menulis jurnal digital tentang matematika dan hal-hal kecil yang ia temukan menarik. Blogger, baginya, adalah tempat menulis. Titik. Tidak lebih dari papan pengumuman digital yang bisa dihias seadanya.</p>
+                    <p>Namun yang ada di layar ini adalah sesuatu yang berbeda. Sesuatu yang hidup.</p>
+                    <p>"Bagaimana bisa?" gumamnya, hampir tanpa sadar.</p>
+                    <p>Pertanyaan itu tidak menemukan jawaban siang itu. Namun ia juga tidak pergi. Ia ikut pulang bersama Rafa, duduk di sebelahnya di angkot, menemaninya makan malam, dan berbisik-bisik pelan saat Rafa berbaring di kasur malam itu, menatap langit-langit kamarnya yang bisu.</p>
+                    <p><em>Bagaimana bisa Blogger jadi seperti itu?</em></p>
+                    <p><em>Dan… bisakah aku membuatnya?</em></p>
+                `
+            },
+            {
+                title: "Chapter 2: Kanvas Pertama",
+                date: "17 Mei 2025",
+                content: `
+                    <p>Jawaban itu datang dari arah yang tidak terduga.</p>
+                    <p>Beberapa minggu kemudian, sekolah memperkenalkan Google Sites sebagai wadah portofolio proyek P5. Para siswa diminta membangun laman sederhana yang mendokumentasikan karya mereka. Rafa mengerjakan tugasnya seperti yang lain—hingga tangannya berhenti di satu titik.</p>
+                    <p>Di panel pengaturan Google Sites, ada sebuah opsi: <em>Sematkan kode HTML.</em></p>
+                    <p>Rafa membacanya dua kali. Lalu tiga kali.</p>
+                    <p>Ia klik.</p>
+                    <p>Sebuah kotak kosong terbuka di hadapannya—kotak putih sederhana yang menunggu untuk diisi. Bagi siapa pun yang melintas, itu hanyalah kolom teks biasa. Namun bagi Rafa, kotak itu terasa seperti pintu.</p>
+                    <p>Malam itu, ia begadang.</p>
+                    <p>Dengan bermodalkan tutorial daring yang ia buka satu per satu, Rafa mulai merangkai baris kode pertamanya. HTML untuk kerangka. CSS untuk warna dan bentuk. JavaScript untuk logika. Ia tidak memahami semuanya sekaligus—jauh dari itu. Ia berkali-kali salah. Tombol yang tidak merespons, tampilan yang berantakan, pesan <em>error</em> berwarna merah yang menyala seperti teguran.</p>
+                    <p>Namun, pada satu titik di tengah malam itu, sesuatu terjadi.</p>
+                    <p>Tombolnya diklik. Jawabannya diperiksa. Dan di layar, muncul tulisan kecil: <strong>Jawaban Benar!</strong></p>
+                    <p>Rafa menatap tulisan itu lama. Kuis matematika itu masih sangat sederhana—hanya satu soal, satu tombol, satu umpan balik. Tampilannya jauh dari kata menarik. Namun Rafa tersenyum, senyum yang tidak bisa ia sembunyikan meski sedang sendirian.</p>
+                    <p>Ia baru saja membuat sesuatu yang <em>hidup</em> dari kode.</p>
+                    <p>Rasa haus itu, alih-alih padam, justru semakin dalam. Rafa terus menggali. Dan tidak lama setelahnya, ia menemukan sesuatu yang membuatnya tertawa kecil—antara takjub dan sedikit menyesal.</p>
+                    <p>Blogger, platform yang sudah ia pakai bertahun-tahun, ternyata juga memiliki mode HTML.</p>
+                    <p>Fitur itu selalu ada. Ia hanya tidak pernah melihatnya.</p>
+                    <p>"Jadi, selama ini pintunya sudah terbuka," bisiknya pada dirinya sendiri, "aku saja yang tidak pernah mencoba masuk."</p>
+                    <p>Sejak malam itu, Blogger menjadi ruang kerjanya. Berbulan-bulan berikutnya ia habiskan dengan tekun: membangun, meruntuhkan, membangun kembali. Prototipe demi prototipe. Versi demi versi. Setiap <em>error</em> adalah pelajaran. Setiap tampilan yang akhirnya berfungsi adalah kemenangan kecil yang terasa besar.</p>
+                `
+            },
+            {
+                title: "Chapter 3: Guru yang Sedang Belajar",
+                date: "17 Mei 2025",
+                content: `
+                    <p>Kini, blog kuis matematika itu sudah berdiri—tidak sempurna, namun nyata dan terus bertumbuh.</p>
+                    <p>Rafa mengisinya satu soal demi satu soal, secara manual. Bukan karena ia tidak tahu bahwa ada kecerdasan buatan yang bisa melakukannya dalam hitungan detik. Ia tahu. Namun baginya, proses memilih soal, memverifikasi jawaban, dan memastikan tingkat kesulitan yang tepat adalah bagian dari belajar itu sendiri. Mengalihkan proses itu terasa seperti mengalihkan sebagian dari dirinya.</p>
+                    <p>Ada kebanggaan yang aneh dalam pekerjaan itu—bukan kebanggaan yang keras dan berisik, melainkan yang tenang dan hangat. Kebanggaan seorang pembuat yang mencintai proses, bukan hanya hasil.</p>
+                    <p>Suatu sore, saat ia kembali menambahkan soal baru, pikirannya melayang ke depan—jauh ke depan.</p>
+                    <p>Ia membayangkan dirinya berdiri di depan kelas. Bukan sebagai siswa, melainkan sebagai guru. Wajah-wajah muda menatapnya dengan penuh rasa ingin tahu—rasa ingin tahu yang tidak asing baginya, karena ia pernah memilikinya, masih memilikinya hingga sekarang.</p>
+                    <p>Dan di sana, di dunia yang ia bayangkan, ada sebuah situs web yang ia bangun sendiri—bukan dari platform siap pakai, melainkan dari nol, dari kode yang ia tulis dengan tangannya sendiri. Sebuah ruang belajar digital yang personal, tempat murid-muridnya bisa berlatih matematika kapan saja dan di mana saja.</p>
+                    <p>Impian itu terasa jauh. Namun tidak asing—karena impian tentang blog kuis ini pun dulu terasa sama jauhnya, dan kini sudah bisa ia sentuh.</p>
+                    <p>Rafa menutup laptopnya perlahan.</p>
+                    <p>Di luar jendela, langit sore menggelap di ujung cakrawala. Sebentar lagi malam. Dan besok, ada baris kode baru yang menunggunya.</p>
+                    <p>Perjalanan itu belum selesai—bahkan, rasanya, baru saja benar-benar dimulai.</p>
+                `
+            }
+        ];
+
+        // --- LOGIC NAVIGASI ---
+        let currentChapter = 0;
+        const STORY_KEY = 'rstory-progress-story1';
+
+        const display = document.getElementById('chapterDisplay');
+        const select = document.getElementById('chapterSelect');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const progressBar = document.getElementById('progressBar');
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProgress();
+            populateDropdown();
+            renderChapter(currentChapter);
+        });
+
+        function loadProgress() {
+            const saved = localStorage.getItem(STORY_KEY);
+            if (saved !== null) currentChapter = parseInt(saved);
+        }
+
+        function saveProgress() {
+            localStorage.setItem(STORY_KEY, currentChapter);
+        }
+
+        function populateDropdown() {
+            storyData.forEach((chapter, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                option.text = chapter.title;
+                select.appendChild(option);
+            });
+        }
+
+        function renderChapter(index) {
+            const chapter = storyData[index];
+            display.innerHTML = `
+                <h2 class="chapter-title">${chapter.title}</h2>
+                <div class="chapter-text">${chapter.content}</div>
+            `;
+            // Set publish date in header
+            const headerDate = document.getElementById('readTime');
+            if (headerDate && chapter.date) headerDate.textContent = chapter.date;
+            select.value = index;
+            prevBtn.disabled = index === 0;
+            if (index === 0) prevBtn.classList.add('disabled'); else prevBtn.classList.remove('disabled');
+
+            if (index === storyData.length - 1) {
+                nextBtn.innerHTML = 'Selesai <i class="fas fa-check"></i>';
+            } else {
+                nextBtn.innerHTML = 'Selanjutnya <i class="fas fa-arrow-right"></i>';
+                nextBtn.disabled = false;
+            }
+
+            const progress = ((index + 1) / storyData.length) * 100;
+            progressBar.style.width = `${progress}%`;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            saveProgress();
+        }
+
+        function changeChapter(direction) {
+            const newIndex = currentChapter + direction;
+            if (newIndex >= 0 && newIndex < storyData.length) {
+                currentChapter = newIndex;
+                renderChapter(currentChapter);
+            }
+        }
+
+        function jumpToChapter() {
+            currentChapter = parseInt(select.value);
+            renderChapter(currentChapter);
+        }
+    </script>
+</body>
+</html>

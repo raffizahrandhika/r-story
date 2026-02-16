@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jejak di bawah Terik - R-STORY</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="rstory-body">
+    
+    <div class="reading-progress-bar" id="progressBar"></div>
+
+    <nav class="rstory-nav reader-nav">
+        <div class="rstory-container nav-container">
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                <span>Kembali ke Home</span>
+            </a>
+            
+            <div class="nav-actions">
+                <button id="themeToggle" class="theme-btn" aria-label="Ganti Tema">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="reader-section">
+        <div class="reader-container">
+            
+            <div class="story-header">
+                <span class="story-category">Fiction Series</span>
+                <h1 class="main-title">Jejak di bawah Terik</h1>
+                <div class="story-meta">
+                    <span>Oleh <b>Raffi Zahrandhika</b></span>
+                    <span class="dot">•</span>
+                    <span id="readTime">17 Mei 2025</span>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <article id="chapterDisplay" class="chapter-content">
+                </article>
+
+            <hr class="divider">
+
+            <div class="chapter-navigation">
+                <button id="prevBtn" class="nav-story-btn" onclick="changeChapter(-1)">
+                    <i class="fas fa-arrow-left"></i> Sebelumnya
+                </button>
+
+                <div class="chapter-select-wrapper">
+                    <select id="chapterSelect" onchange="jumpToChapter()">
+                        </select>
+                </div>
+
+                <button id="nextBtn" class="nav-story-btn primary" onclick="changeChapter(1)">
+                    Selanjutnya <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="rstory-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <h3>R-STORY</h3>
+                    <p>Tales, Opinions, & Reflections</p>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="https://instagram.com/raffizahrandhika" target="_blank" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/mrffzd" target="_blank" aria-label="Twitter">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/muhammad-raffi-zahrandhika-7a6537378" target="_blank" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://tiktok.com/@raffizahrandhika" target="_blank" aria-label="TikTok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://t.me/raffizahrandhika" target="_blank" aria-label="Telegram">
+                        <i class="fab fa-telegram-plane"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Muhammad Raffi Zahrandhika. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <script>
+        // --- DATA CERITA ---
+        const storyData = [
+            {
+                title: "Chapter 1: Jalan yang Berubah",
+                date: "26 Feb 2025",
+                content: `
+                    <p>Matahari siang itu terasa lebih menyengat dari biasanya. Cahayanya memantul ganas di atas aspal lapangan sekolah yang mulai retak-retak. Rafa menyeka keringat yang menetes di pelipisnya, matanya menyipit menatap gerbang sekolah yang terbuka lebar. Di sinilah semuanya bermula, pikirnya. Bukan dengan drama besar atau kembang api, melainkan dengan keheningan siang bolong yang dipecahkan oleh suara bel pulang sekolah.</p>
+                    <p>"Raf! Woy, melamun aja lo!" seru Dika sambil menepuk bahu Rafa keras-keras. Rafa tersentak, lamunannya tentang masa depan yang abstrak seketika buyar digantikan wajah Dika yang cengengesan. "Anak-anak mau nongkrong di warung Bu Tin, ikut gak?" tanyanya. Rafa menggeleng pelan, "Gue mau langsung balik, ada yang harus gue kerjain." Dika hanya mengangkat bahu, "Yaudah, jangan terlalu serius jadi orang, Raf. Nanti cepet tua."</p>
+                `
+            },
+            {
+                title: "Chapter 2: Melangkah Sendiri",
+                date: "05 Mar 2025",
+                content: `
+                    <p>Perjalanan pulang selalu menjadi momen favorit Rafa. Di dalam angkot yang berdesak-desakan, ia justru menemukan kesendiriannya. Ia mengamati orang-orang: ibu-ibu yang sibuk menghitung belanjaan, bapak tua yang tertidur dengan mulut terbuka, dan anak kecil yang menangis minta es krim. Bagi Rafa, mereka adalah potongan-potongan cerita yang belum selesai ditulis.</p>
+                    <p>Ia mengeluarkan buku catatan kecil dari tasnya. Di sana, ia mulai menuliskan apa yang ia lihat. "Bayang-bayang siang tidak pernah berbohong," tulisnya. "Ia selalu jatuh tepat di tempat kita berdiri, mengingatkan bahwa lari dari kenyataan itu percuma." Pena hitamnya menari-nari di atas kertas, mengabaikan guncangan angkot yang melewati jalan berlubang. Bagi Rafa, dunia ini terlalu bising jika tidak diredam dengan tulisan.</p>
+                `
+            },
+            {
+                title: "Chapter 3: Langit Masih Sama",
+                date: "12 Mar 2025",
+                content: `
+                    <p>Sampai di rumah, langit mulai berubah warna menjadi jingga keunguan. Rafa duduk di teras, menatap perubahan warna langit yang perlahan namun pasti. Ada rasa lelah yang aneh menyergap dadanya. Bukan lelah fisik, melainkan lelah memikirkan "mau jadi apa" setelah lulus nanti. Pertanyaan itu seperti hantu yang terus membayangi setiap langkah kakinya di bawah terik matahari.</p>
+                    <p>Tiba-tiba ponselnya bergetar. Sebuah pesan masuk dari nomor tak dikenal. Isinya singkat namun cukup membuat jantung Rafa berdegup kencang: "Tulisanmu di mading sekolah... aku suka. Jangan berhenti." Rafa tersenyum tipis. Mungkin, hanya mungkin, jejak-jejak kecil yang ia buat di bawah terik matahari ini tidak sia-sia. Senja itu menutup hari dengan sebuah harapan baru.</p>
+                `
+            }
+        ];
+
+        // --- LOGIC NAVIGASI ---
+        let currentChapter = 0;
+        const STORY_KEY = 'rstory-progress-story1';
+
+        const display = document.getElementById('chapterDisplay');
+        const select = document.getElementById('chapterSelect');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const progressBar = document.getElementById('progressBar');
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProgress();
+            populateDropdown();
+            renderChapter(currentChapter);
+        });
+
+        function loadProgress() {
+            const saved = localStorage.getItem(STORY_KEY);
+            if (saved !== null) currentChapter = parseInt(saved);
+        }
+
+        function saveProgress() {
+            localStorage.setItem(STORY_KEY, currentChapter);
+        }
+
+        function populateDropdown() {
+            storyData.forEach((chapter, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                option.text = chapter.title;
+                select.appendChild(option);
+            });
+        }
+
+        function renderChapter(index) {
+            const chapter = storyData[index];
+            display.innerHTML = `
+                <h2 class="chapter-title">${chapter.title}</h2>
+                <div class="chapter-text">${chapter.content}</div>
+            `;
+            // Set publish date in header
+            const headerDate = document.getElementById('readTime');
+            if (headerDate && chapter.date) headerDate.textContent = chapter.date;
+            select.value = index;
+            prevBtn.disabled = index === 0;
+            if (index === 0) prevBtn.classList.add('disabled'); else prevBtn.classList.remove('disabled');
+
+            if (index === storyData.length - 1) {
+                nextBtn.innerHTML = 'Selesai <i class="fas fa-check"></i>';
+            } else {
+                nextBtn.innerHTML = 'Selanjutnya <i class="fas fa-arrow-right"></i>';
+                nextBtn.disabled = false;
+            }
+
+            const progress = ((index + 1) / storyData.length) * 100;
+            progressBar.style.width = `${progress}%`;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            saveProgress();
+        }
+
+        function changeChapter(direction) {
+            const newIndex = currentChapter + direction;
+            if (newIndex >= 0 && newIndex < storyData.length) {
+                currentChapter = newIndex;
+                renderChapter(currentChapter);
+            }
+        }
+
+        function jumpToChapter() {
+            currentChapter = parseInt(select.value);
+            renderChapter(currentChapter);
+        }
+    </script>
+</body>
+</html>

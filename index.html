@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R-STORY - Tales, Opinions, & Reflections</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="rstory-body">
+    
+    <nav class="rstory-nav">
+        <div class="rstory-container nav-container">
+            <a href="#" class="nav-logo">
+                <h2>R-STORY</h2>
+            </a>
+
+            <div class="nav-right">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#series">Series</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <button id="themeToggle" class="theme-btn" aria-label="Ganti Tema">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                    </button>
+                    
+                    <div class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-section">
+        <div class="rstory-container hero-container">
+            <div class="hero-text">
+                <span class="badge">Now Writing</span>
+                <h1 class="hero-title">Tales, Opinions, & <br>Reflections.</h1>
+                <p class="hero-desc">
+                    Sebuah ruang digital untuk menampung imajinasi dan realita. 
+                    Tempat di mana cerita sederhana berubah menjadi kenangan yang abadi.
+                </p>
+                <div class="hero-cta">
+                    <a href="#series" class="btn btn-primary">Mulai Membaca</a>
+                    <a href="#about" class="btn btn-outline">Tentang Penulis</a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="visual-blob"></div>
+                <img src="https://res.cloudinary.com/dy6sxsb26/image/upload/v1763469902/rstory-landing-page_jwdapf.png" alt="Muhammad Raffi Zahrandhika" class="profile-img">
+            </div>
+        </div>
+    </section>
+
+    <section id="series" class="series-section">
+        <div class="rstory-container">
+            <div class="section-header">
+                <span class="subtitle">Selected Works</span>
+                <h2 class="title">Story Collection</h2>
+            </div>
+
+            <article class="story-card">
+                <div class="card-grid">
+                    <div class="card-visual">
+                        <div class="book-cover">
+                            <i class="fas fa-sun sun-icon"></i>
+                            <div class="cover-text">
+                                <h3>Jejak di bawah<br>Terik</h3>
+                                <span>Raffi Z.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-content">
+                        <div class="meta-tags">
+                            <span class="tag">Coming of Age</span>
+                            <span class="tag">Drama SMA</span>
+                            <span class="status completed">Completed</span>
+                        </div>
+                        
+                        <h3 class="story-title">Jejak di bawah Terik</h3>
+                        <p class="story-synopsis">
+                            Masa SMA bukan hanya tentang seragam putih abu-abu, tapi tentang langkah-langkah kecil di bawah panasnya matahari siang yang membentuk siapa kita hari ini. Ikuti perjalanan Rafa menemukan makna dalam keseharian yang tampak biasa namun penuh cerita.
+                        </p>
+
+                        <div class="chapter-accordion">
+                            <button class="accordion-btn" onclick="toggleChapters('story1', this)">
+                                <span>Lihat Daftar Chapter (3)</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            
+                            <div id="story1" class="chapter-list">
+                                <a href="story-1.html?" class="chapter-item">
+                                    <span class="ch-num">01</span>
+                                    <span class="ch-title">Jalan yang Berubah</span>
+                                    <span class="ch-time">26 Feb 2025</span>
+                                </a>
+                                <a href="story-1.html" class="chapter-item">
+                                    <span class="ch-num">02</span>
+                                    <span class="ch-title">Melangkah Sendiri</span>
+                                    <span class="ch-time">05 Mar 2025</span>
+                                </a>
+                                <a href="story-1.html" class="chapter-item">
+                                    <span class="ch-num">03</span>
+                                    <span class="ch-title">Langit Masih Sama</span>
+                                    <span class="ch-time">12 Mar 2025</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="story-card">
+                <div class="card-grid">
+                    <div class="card-visual">
+                        <div class="book-cover">
+                            <i class="fas fa-laptop-code sun-icon"></i>
+                            <div class="cover-text">
+                                <h3>Desiran Kode<br>di Balik Layar</h3>
+                                <span>Raffi Z.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-content">
+                        <div class="meta-tags">
+                            <span class="tag">Teknologi</span>
+                            <span class="tag">Pendidikan</span>
+                            <span class="status completed">Completed</span>
+                        </div>
+                        
+                        <h3 class="story-title">Baris Kode untuk Mimpi</h3>
+                        <p class="story-synopsis">
+                            Perjalanan Rafa dalam dunia pemrograman dimulai dari rasa penasaran sederhana. Dari penemuan Smart Saloku hingga menguasai HTML, CSS, dan JavaScript, cerita ini mengikuti mimpi seorang siswa SMA untuk menciptakan platform e-learning impiannya.
+                        </p>
+
+                        <div class="chapter-accordion">
+                            <button class="accordion-btn" onclick="toggleChapters('story2', this)">
+                                <span>Lihat Daftar Chapter (3)</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            
+                            <div id="story2" class="chapter-list">
+                                <a href="story-2.html" class="chapter-item">
+                                    <span class="ch-num">01</span>
+                                    <span class="ch-title">Desiran di Balik Layar</span>
+                                    <span class="ch-time">16 Feb 2026</span>
+                                </a>
+                                <a href="story-2.html" class="chapter-item">
+                                    <span class="ch-num">02</span>
+                                    <span class="ch-title">Kanvas Pertama</span>
+                                    <span class="ch-time">16 Feb 2026</span>
+                                </a>
+                                <a href="story-2.html" class="chapter-item">
+                                    <span class="ch-num">03</span>
+                                    <span class="ch-title">Guru yang Sedang Belajar</span>
+                                    <span class="ch-time">16 Feb 2026</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="rstory-container">
+            <div class="about-content">
+                <span class="subtitle">The Author</span>
+                <h2 class="title">Muhammad Raffi Zahrandhika</h2>
+                <div class="about-text">
+                    <p>
+                        R-STORY adalah kanvas digital saya. Menulis adalah cara saya memproses dunia, 
+                        dari opini tentang isu terkini hingga fiksi yang lahir dari lamunan panjang di sore hari.
+                    </p>
+                    <p>
+                        Saya percaya bahwa setiap orang memiliki cerita yang layak didengar. 
+                        Di sini, saya mencoba menyuarakan bagian kecil dari cerita tersebut melalui tulisan.
+                    </p>
+                </div>
+                <div class="signature">Raffi Z.</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-future">
+    <div class="footer-top-border"></div>
+
+    <div class="rstory-container">
+        <div class="footer-grid">
+            
+            <div class="footer-brand-col">
+                <div class="brand-wrapper">
+                    <h2 class="brand-logo">R-STORY <span class="version">v2.0</span></h2>
+                    <div class="session-monitor">
+                        <div class="monitor-item" id="connectionStatus">
+                            <span class="pulse-dot"></span>
+                            <span class="monitor-label">ONLINE</span>
+                        </div>
+                        
+                        <span class="monitor-divider">|</span>
+                        
+                        <div class="monitor-item">
+                            <i class="far fa-clock monitor-icon"></i>
+                            <span class="time-display" id="localTime">00:00:00</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="brand-mission">
+                    Mengarsipkan data imajinasi dan realita ke dalam jaringan digital. 
+                    Membaca adalah proses mengunduh pengalaman baru.
+                </p>
+            </div>
+
+            <div class="footer-nav-col">
+                <h4 class="col-header">Directory</h4>
+                <ul class="nav-list">
+                    <li><a href="index.html#home" class="nav-item"><span>//</span> Home Base</a></li>
+                    <li><a href="index.html#series" class="nav-item"><span>//</span> Story Database</a></li>
+                    <li><a href="index.html#about" class="nav-item"><span>//</span> Author Profile</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-social-col">
+                <h4 class="col-header">Network</h4>
+                <div class="social-chips">
+                    <a href="https://instagram.com/raffizahrandhika" target="_blank" class="chip">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                    <a href="https://x.com/mrffzd" target="_blank" class="chip">
+                        <i class="fab fa-x-twitter"></i> Twitter/X
+                    </a>
+                    <a href="https://linkedin.com/in/muhammad-raffi-zahrandhika-7a6537378" target="_blank" class="chip">
+                        <i class="fab fa-linkedin-in"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bar">
+    <span class="copyright-text">&copy; 2026 Muhammad Raffi Zahrandhika. All rights reserved.</span>
+    
+    <button id="systemPanel" class="system-panel-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Scroll to Top">
+        <span id="batteryIcon"><i class="fas fa-bolt"></i></span>
+        <span id="batteryLevel">PWR: --%</span>
+        <span class="panel-divider">//</span>
+        <span class="panel-action">RETURN TOP <i class="fas fa-arrow-up"></i></span>
+    </button>
+</div>
+    </div>
+</footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
